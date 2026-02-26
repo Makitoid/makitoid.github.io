@@ -38,8 +38,8 @@ twitter: https://twitter.com/makitoidwang
 
 # Misc
 nanobar: /js/nanobar.min.js
-switch_light: 🌅
-switch_dark: 🌃
+switch_light: 🌃
+switch_dark: 🌅
 
 # Picture enlargement
 picjs: /js/pic.min.js
