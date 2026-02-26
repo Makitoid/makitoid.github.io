@@ -32,7 +32,7 @@ placename: Jinan
 #placelink: https://en.wikipedia.org/wiki/Earth
 github: https://github.com/Makitoid
 #linkedin: https://linkedin.com/in/adisaktijrs
-X: https://twitter.com/makitoidwang
+twitter: https://twitter.com/makitoidwang
 #instagram: https://instagram.com/adisaktijrs
 #stackoverflow: https://stackoverflow.com/story/tobiasreithmeier
 
@@ -45,7 +45,7 @@ switch_dark: 🌃
 picjs: /js/pic.min.js
 
 # favicon
-favicon: /images/favicon.png
+favicon: /images/ava.png
 # thumbnail
 thumbnail: /images/thumbnail.jpg
 
