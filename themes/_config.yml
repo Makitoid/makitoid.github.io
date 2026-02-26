@@ -1,17 +1,17 @@
 #title in header
-title: "Hi Folks."
+title: "Hi👋"
 
 #main info
 #owner
-owner: "I am Adi Sakti Jrs"
-email: test@test.test
-info: "A student and web developer from Indonesia 🇮🇩"
+#owner: "I am Adi Sakti Jrs"
+email: Makitoidyyds@gmail.com
+info: "这是Makitoid学习Hexo的地方，使用Minima主题"
 #description
-desc: "This is Minima, an undoubtedly simple and lightweight dark/light mode theme for Hexo. I created this from scratch using Skeleton CSS boilerplate. It only uses CSS and Vanilla JS, without using unnecessary third-party 'render-blocking' libraries! 😁"
+#desc: ""
 
 #menu
 menu:
-  Works: /Works
+  Test: /test2
   About: /About
 
 #index/main page max show posts (in number)
@@ -28,18 +28,18 @@ usercss: css/user.css
 
 # social profile at the footer/bottom
 footer: true
-placename: Earth
-placelink: https://en.wikipedia.org/wiki/Earth
-github: https://github.com/adisaktijrs
-linkedin: https://linkedin.com/in/adisaktijrs
-twitter: https://twitter.com/adisaktijrs
-instagram: https://instagram.com/adisaktijrs
-stackoverflow: https://stackoverflow.com/story/tobiasreithmeier
+placename: Jinan
+#placelink: https://en.wikipedia.org/wiki/Earth
+github: https://github.com/Makitoid
+#linkedin: https://linkedin.com/in/adisaktijrs
+X: https://twitter.com/makitoidwang
+#instagram: https://instagram.com/adisaktijrs
+#stackoverflow: https://stackoverflow.com/story/tobiasreithmeier
 
 # Misc
 nanobar: /js/nanobar.min.js
-switch_light: ☀️
-switch_dark: 🌑
+switch_light: 🌅
+switch_dark: 🌃
 
 # Picture enlargement
 picjs: /js/pic.min.js
