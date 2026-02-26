@@ -45,7 +45,7 @@ switch_dark: 🌃
 picjs: /js/pic.min.js
 
 # favicon
-favicon: /images/ava.png
+favicon: /images/ava-compressed.webp
 # thumbnail
 thumbnail: /images/thumbnail.jpg
 
