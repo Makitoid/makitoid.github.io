@@ -48,6 +48,8 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace: ''
+    exclude_languages:
+    - C
   wrap: true
   hljs: false
 prismjs:

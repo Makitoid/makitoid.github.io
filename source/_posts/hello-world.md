@@ -1,5 +1,7 @@
 ---
 title: Hello World
+tags:
+  - test
 ---
 这里是Makitoid学习hexo的地方。
 
