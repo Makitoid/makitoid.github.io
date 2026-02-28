@@ -43,13 +43,13 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
-syntax_highlighter: prismjs
+syntax_highlighter: prismjs #highlight.js 
 highlight:
   line_number: false
   auto_detect: false
   tab_replace: ''
   exclude_languages:
-  wrap: false
+  wrap: true
   hljs: false
 prismjs:
   preprocess: true
