@@ -1,4 +1,0 @@
----
-title: catagory
-layout: catagory
----
