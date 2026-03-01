@@ -7,15 +7,15 @@ title: "Hi👋"
 email: Makitoidyyds@gmail.com
 
 #description
-#desc: ""
+desc: "一个神秘博客"
 
 #menu
 menu:
-  category: /category
-  About: /About
+  分类: /category
+  关于: /About
 
 #index/main page max show posts (in number)
-max_post: 4
+max_post: 6
 
 # Colors use hex color without #
 # Theme color
