@@ -321,3 +321,8 @@ body.darkmode {
   }
 
 }
+
+.categories-page ul {
+  list-style: none;
+  padding-left: 0;
+}
