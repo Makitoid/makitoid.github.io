@@ -31,3 +31,5 @@ void usart1_Proc()
     HAL_UART_Transmit(&huart1,(uint8_t *)str,strlen(str),50);
     count++;
 {% endcodeblock %}
+
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=116170443199889&bvid=BV1xRPvzTERb&cid=36449093843&p=1" scrolling="no" border="0" frameborder="yes" framespacing="0" allowfullscreen="true"></iframe>
