@@ -32,4 +32,6 @@ void usart1_Proc()
     count++;
 {% endcodeblock %}
 
+
+测试 bilibili视频嵌入
 <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=116170443199889&bvid=BV1xRPvzTERb&cid=36449093843&p=1" scrolling="no" border="0" frameborder="yes" framespacing="0" allowfullscreen="true"></iframe>
