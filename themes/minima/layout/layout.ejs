@@ -17,13 +17,13 @@
 
   var title = title = config.title;
   if (is_archive()){
-    title = 'All Posts - ' + config.author;
+    title = '所有帖子 - ' + config.author;
   } else if (is_post()){
     title = page.title;
   } else if (is_page()){
     title = page.title + ' - ' + config.author;
   } else if (is_tag()){
-    title = 'Posts Related to ' + page.tag;
+    title = '含有' + page.tag + '标签：';
   }
   %>
   <title><%= title %></title>

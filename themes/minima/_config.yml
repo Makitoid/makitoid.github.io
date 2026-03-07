@@ -47,7 +47,7 @@ picjs: /js/pic.min.js
 # favicon
 favicon: /images/ava-compressed.webp
 # thumbnail
-thumbnail: /images/thumbnail.jpg
+#thumbnail: /images/thumbnail.jpg
 
 article:
   thumbnail: true
