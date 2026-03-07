@@ -22,6 +22,8 @@
     title = page.title;
   } else if (is_page()){
     title = page.title + ' - ' + config.author;
+  } else if (is_category()){
+    title = '分类：' + page.category;
   } else if (is_tag()){
     title = '含有' + page.tag + '标签：';
   }

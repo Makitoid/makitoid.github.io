@@ -13,7 +13,7 @@ desc: "一个神秘博客"
 menu:
   分类: /category
   关于: /About
-
+  友链: /Friends
 #index/main page max show posts (in number)
 max_post: 6
 
