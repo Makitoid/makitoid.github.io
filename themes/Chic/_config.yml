@@ -1,12 +1,13 @@
 # Header
-navname: Makitoid
+navname: Makitoid's Blog
 
 # navigatior items
 nav:
-  Posts: /archives
-  Categories: /category
-  Tags: /tag
-  About: /about
+  帖子: /archives
+  分类: /category
+  标签: /tag
+  关于: /About
+  友链: /Friends
 
 # favicon
 favicon: /favicon.ico
@@ -16,7 +17,7 @@ nickname: Makitoid
 
 ### this variable is MarkDown form.
 description: 不忘初心 方得始终
-avatar: /image/ava.png
+avatar: /image/ava-compressed.webp
 
 # main menu navigation
 ## links key words should not be changed.
