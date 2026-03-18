@@ -1,13 +1,13 @@
 
 # Site Settings
-favicon:    # /favicon.ico
-logo: /images/0.gif
+favicon:     /images/0.webp
+logo: /images/0.webp
 # 首页图
 # Hero Section
 hero:
   enable: false  # 是否开启首页图片
-  background_image: /images/11.webp
-  typing_text: 天接云涛连晓雾，星河欲转千帆舞
+  background_image: /images/1.webp
+  typing_text: 不忘初心 方得始终
   typing_speed: 100
   delete_speed: 50
   pause_duration: 2000
@@ -22,7 +22,7 @@ article_list:
 colors:
   primary: '#1a1a1a'
   secondary: '#666666'
-  accent: '#ff6b6b' # 主题色
+  accent: '#1c96d0' # 主题色
   background: '#ffffff'
   text: '#333333'
   overlay: 'rgba(0, 0, 0, 0.7)'
@@ -43,13 +43,12 @@ layout:
 
 # Social Links 社交链接
 social:
-  github: https://github.com/forever218
+  github: https://github.com/makitoid
 #  twitter: https://twitter.com/yourusername
 #  instagram: https://instagram.com/yourusername
 #  linkedin: https://linkedin.com/in/yourusername
-  email: mailto:3316703158@qq.com
-  bilibili: https://space.bilibili.com/82657269
-
+  email: mailto:whm061019@126.com
+  bilibili: https://space.bilibili.com/3690988600035392?spm_id_from=333.40164.0.0
 # Navigation Menu 导航菜单
 menu:
   首页: /
@@ -69,18 +68,18 @@ navbar:
 
 # Footer 页脚
 footer:
-  copyright: © 2025 李思然. All rights reserved.
+  copyright: © 2025 Makitoid. All rights reserved.
   custom_html: ""
   # Footer centered image with link (页脚居中图片及链接)
   image:
-    enable: true  # 是否显示图片，设为true显示
+    enable: false  # 是否显示图片，设为true显示
     src: "https://s21.ax1x.com/2024/08/23/pAFm0cq.png"  # 图片URL
     link: "https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"  # 图片链接地址
     alt: "Footer Image"  # 图片替代文本
   badges:
       - link: https://hexo.io/ #徽标指向网站链接
         shields: https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg #徽标API
-        message: 博客框架为Hexo_v5.4.0 #徽标提示语  
+        message: 博客框架为Hexo_v8.1.0 #徽标提示语  
       - link: http://creativecommons.org/licenses/by-nc-sa/4.0/
         shields: https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg
         message: 本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可
@@ -200,7 +199,7 @@ inject:
 
 # AI摘要配置
 ai_summary:
-  enable: true  # 是否启用AI摘要功能，默认关闭
+  enable: false  # 是否启用AI摘要功能，默认关闭
   api_key: ""  # DeepSeek API密钥
   summary_directly: false  # 是否直接生成摘要，默认为false（需要点击按钮生成）
   # 其他可选配置
