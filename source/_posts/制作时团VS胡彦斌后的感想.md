@@ -4,9 +4,9 @@ tag:
   - B站视频
 categories: Makitoid瞎BB
 ---
-{% blockquote %}
+{% note danger modern %}
 **警告：如果你是时代少年团粉丝，请不要看这篇文章！！！**
-{% endblockquote %}
+{% endnote %}
 
 想给B站小号增一些流量，所以就模仿着B站上时团VS陶喆的那个做了这个视频，如下：
 <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=116170443199889&bvid=BV1xRPvzTERb&cid=36449093843&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
