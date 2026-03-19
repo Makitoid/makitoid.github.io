@@ -5,8 +5,8 @@ logo: /images/0.webp
 # 首页图
 # Hero Section
 hero:
-  enable: false  # 是否开启首页图片
-  background_image: /images/1.webp
+  enable: true  # 是否开启首页图片
+  background_image: /images/3.jpeg
   typing_text: 不忘初心 方得始终
   typing_speed: 100
   delete_speed: 50
@@ -155,7 +155,7 @@ theme_config:
     excerpt_length: 200  # 文章摘要长度
     read_more: "阅读更多"  # 阅读更多按钮文字
     use_default_cover: true  # 当文章未设置封面时是否使用默认封面
-    default_cover: "/images/19.png"  # 默认封面图片路径
+    default_cover: "/images/2.png"  # 默认封面图片路径
 
 
   # 统计分析

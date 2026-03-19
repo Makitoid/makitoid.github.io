@@ -1,125 +1,115 @@
-doctype html
-html(lang=config.language)
-  head
-    meta(charset='UTF-8')
-    title= (page.title || '关于我') + ' | ' + config.title
-    link(rel='stylesheet', href=url_for('/css/about.css'))
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css')
+main.about-page
+  .about-container
+    .about-header
+      .about-avatar
+        img(src=url_for(theme.author_card && theme.author_card.avatar ? theme.author_card.avatar : '/img/avatar.png'), alt="Avatar")
+      h1.about-name= theme.author_card && theme.author_card.name ? theme.author_card.name : 'Your Name'
+      p.about-bio= theme.author_card && theme.author_card.bio ? theme.author_card.bio : 'Your Bio'
 
-  body
-    main.about-page
-      .about-container
-        .about-header
-          .about-avatar
-            img(src=url_for(theme.author_card && theme.author_card.avatar ? theme.author_card.avatar : '/img/avatar.png'), alt="Avatar")
-          h1.about-name= theme.author_card && theme.author_card.name ? theme.author_card.name : 'Your Name'
-          p.about-bio= theme.author_card && theme.author_card.bio ? theme.author_card.bio : 'Your Bio'
-
-        .interests-showcase
-          if site.data.about && site.data.about.cards
-            each card in site.data.about.cards
-              - var cardClass = 'interest-card'
-              - if (card.layout) cardClass += ' card-' + card.layout
-              - if (card.size) cardClass += ' card-' + card.size
-              
-              a(class=cardClass, href=card.link || '#', target="_blank")
-                - var bgStyle = card.image ? `background-image: url(${url_for(card.image)});` : `background: ${card.background};`
-                .card-bg(style=`${bgStyle} background-size: cover; background-position: center;`)
-                
-                .card-content
-                  h3.card-title= card.title
-                  .card-description
-                    p= card.description
-                  .card-icon
-                    i(class=card.icon)
-                  .card-hover-content
-                    p= card.details
-          else
-             p(style="text-align:center") 暂无数据
-
-        .about-details
-          .about-section
-            h2 关于我
-            .profile-info
-              .profile-item
-                .profile-label 称呼
-                .profile-value Makitoid
-              .profile-item
-                .profile-label 家乡
-                .profile-value 山东济南
-              .profile-item
-                .profile-label 大学
-                .profile-value 齐鲁工业大学
-              .profile-item
-                .profile-label 现居地
-                .profile-value 山东济南
-              .profile-item
-                .profile-label 教育
-                .profile-value 本科
-              .profile-item
-                .profile-label 身份
-                .profile-value 一个普通的人 
-
-          .about-section
-            h2 兴趣点
-            .bio-content
-              .skills-list
-                span.skill-tag 折腾电脑
-                span.skill-tag 爬山
-                span.skill-tag 数码
-                span.skill-tag 地铁跑酷
-
-          .about-section
-            h2 自我介绍
-            .bio-content(style="white-space: pre-wrap;")
-              != page.content 
-              |一个普通的人。
-          .about-section
-            h2 联系方式
-            .contact-info
-              a.contact-item(href="mailto:whm061019@126.com")
-                i.fas.fa-envelope
-                div
-                  .contact-label 邮箱
-                  .contact-value 3316703158@qq.com
-              a.contact-item(href="https://github.com/makitoid")
-                i.fab.fa-github
-                div
-                  .contact-label GitHub
-                  .contact-value Makitoid
-              a.contact-item(href="https://space.bilibili.com/369098860003539")
-                i.fas.fa-tv
-                div
-                  .contact-label 哔哩哔哩
-                  .contact-value Makitoid_Wang
-
-    
-    //- 【JS 修改】降低灵敏度 + 增加角度限制
-    script.
-      document.addEventListener('DOMContentLoaded', function() {
-        const cards = document.querySelectorAll('.interest-card');
-        
-        cards.forEach(card => {
-          card.addEventListener('mousemove', function(e) {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            
-            // 【修正 1】降低灵敏度：除数从 20 改为 60，动效更微小细腻
-            let rotateY = x / 60; 
-            let rotateX = -y / 60;
-            
-            // 【修正 2】角度限制：限制在 ±8 度以内，防止太歪
-            rotateY = Math.max(-8, Math.min(8, rotateY));
-            rotateX = Math.max(-8, Math.min(8, rotateX));
-            
-            // 保持上浮 -16px
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02) translateY(-16px)`;
-          });
+    .interests-showcase
+      if site.data.about && site.data.about.cards
+        each card in site.data.about.cards
+          - var cardClass = 'interest-card'
+          - if (card.layout) cardClass += ' card-' + card.layout
+          - if (card.size) cardClass += ' card-' + card.size
           
-          card.addEventListener('mouseleave', function() {
-            // 复原
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1) translateY(0)';
-          });
-        });
+          a(class=cardClass, href=card.link || '#', target="_blank")
+            - var bgStyle = card.image ? `background-image: url(${url_for(card.image)});` : `background: ${card.background};`
+            .card-bg(style=`${bgStyle} background-size: cover; background-position: center;`)
+              
+              .card-content
+                h3.card-title= card.title
+                .card-description
+                  p= card.description
+                .card-icon
+                  i(class=card.icon)
+                .card-hover-content
+                  p= card.details
+      else
+         p(style="text-align:center") 暂无数据
+
+    .about-details
+      .about-section
+        h2 关于我
+        .profile-info
+          .profile-item
+            .profile-label 称呼
+            .profile-value Makitoid
+          .profile-item
+            .profile-label 家乡
+            .profile-value 山东济南
+          .profile-item
+            .profile-label 大学
+            .profile-value 齐鲁工业大学
+          .profile-item
+            .profile-label 现居地
+            .profile-value 山东济南
+          .profile-item
+            .profile-label 教育
+            .profile-value 本科
+          .profile-item
+            .profile-label 身份
+            .profile-value 一个普通的人 
+
+      .about-section
+        h2 兴趣点
+        .bio-content
+          .skills-list
+            span.skill-tag 折腾电脑
+            span.skill-tag 爬山
+            span.skill-tag 数码
+            span.skill-tag 地铁跑酷
+
+      .about-section
+        h2 自我介绍
+        .bio-content(style="white-space: pre-wrap;")
+          != page.content 
+          |一个普通的人。
+      .about-section
+        h2 联系方式
+        .contact-info
+          a.contact-item(href="mailto:whm061019@126.com")
+            i.fas.fa-envelope
+            div
+              .contact-label 邮箱
+              .contact-value 3316703158@qq.com
+          a.contact-item(href="https://github.com/makitoid")
+            i.fab.fa-github
+            div
+              .contact-label GitHub
+              .contact-value Makitoid
+          a.contact-item(href="https://space.bilibili.com/369098860003539")
+            i.fas.fa-tv
+            div
+              .contact-label 哔哩哔哩
+              .contact-value Makitoid_Wang
+
+//- 【JS 修改】降低灵敏度 + 增加角度限制
+script.
+  document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.interest-card');
+    
+    cards.forEach(card => {
+      card.addEventListener('mousemove', function(e) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        // 【修正 1】降低灵敏度：除数从 20 改为 60，动效更微小细腻
+        let rotateY = x / 60; 
+        let rotateX = -y / 60;
+        
+        // 【修正 2】角度限制：限制在 ±8 度以内，防止太歪
+        rotateY = Math.max(-8, Math.min(8, rotateY));
+        rotateX = Math.max(-8, Math.min(8, rotateX));
+        
+        // 保持上浮 -16px
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02) translateY(-16px)`;
       });
+      
+      card.addEventListener('mouseleave', function() {
+        // 复原
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1) translateY(0)';
+      });
+    });
+  });
