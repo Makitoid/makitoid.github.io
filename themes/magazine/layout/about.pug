@@ -4,7 +4,7 @@ html(lang=config.language)
     meta(charset='UTF-8')
     title= (page.title || '关于我') + ' | ' + config.title
     link(rel='stylesheet', href=url_for('/css/about.css'))
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css')
+    //link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css')
 
   body
     main.about-page
@@ -35,7 +35,7 @@ html(lang=config.language)
                   .card-hover-content
                     p= card.details
           else
-             p(style="text-align:center") 暂无数据
+             p(style="text-align:center")
 
         .about-details
           .about-section
@@ -52,7 +52,7 @@ html(lang=config.language)
                 .profile-value 山东济南
               .profile-item
                 .profile-label 教育
-                .profile-value 大四在读
+                .profile-value 本科在读
 
           .about-section
             h2 兴趣点
