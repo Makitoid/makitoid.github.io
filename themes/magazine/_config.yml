@@ -53,11 +53,12 @@ social:
 menu:
   首页: /
   关于: /about/
-  归档: /archives/
-  分类: /categories/
-  标签: /tags/
+  文章:
+    归档: /archives/
+    分类: /categories/    
+    标签: /tags/
   友链: /link/
-  #网站:
+  #11:
     #示例网站: https://example.com
 
 
