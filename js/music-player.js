@@ -15,6 +15,60 @@
     const audio = document.querySelector('.music-player-audio');
     const mini = player.querySelector('.music-player-mini');
 
+    const toggleBtn = player.querySelector('.music-player-toggle');
+    const collapseBtn = mini.querySelector('.music-player-collapse');
+    const toggleIcon = toggleBtn ? toggleBtn.querySelector('i') : null;
+    const collapseIcon = collapseBtn ? collapseBtn.querySelector('i') : null;
+
+    let isPlaying = false;
+
+    function updateToggleIcon() {
+      if (!toggleIcon) return;
+      toggleIcon.className = player.classList.contains('collapsed')
+        ? (isPlaying ? 'fas fa-pause' : 'fas fa-play')
+        : 'fas fa-music';
+    }
+
+    function updateCollapseIcon() {
+      if (collapseIcon) {
+        collapseIcon.className = player.classList.contains('collapsed')
+          ? 'fas fa-chevron-right'
+          : 'fas fa-chevron-left';
+      }
+    }
+
+    function togglePlayer() {
+      player.classList.toggle('collapsed');
+      updateToggleIcon();
+      updateCollapseIcon();
+      try {
+        localStorage.setItem('music-player-collapsed', player.classList.contains('collapsed'));
+      } catch (e) {}
+    }
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        togglePlayer();
+      });
+    }
+
+    if (collapseBtn) {
+      collapseBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        togglePlayer();
+      });
+    }
+
+    // Restore collapsed state from localStorage
+    try {
+      if (localStorage.getItem('music-player-collapsed') === 'true') {
+        player.classList.add('collapsed');
+        updateToggleIcon();
+        updateCollapseIcon();
+      }
+    } catch (e) {}
+
     // Mini controls
     const miniPlayBtn = mini.querySelector('.music-player-play');
     const miniPrevBtn = mini.querySelector('.music-player-prev');
@@ -22,12 +76,6 @@
     const miniTitle = mini.querySelector('.music-player-title');
     const miniArtist = mini.querySelector('.music-player-artist');
     const miniCover = mini.querySelector('.music-player-cover img');
-
-    // Playlist data from config (stored in data attributes on the player element)
-    // Since we removed the panel, we need another way to get song data.
-    // We'll store it in a script tag or use the player's data attributes.
-    // For simplicity, let's read from a data-songs attribute if available,
-    // otherwise fallback to the old method if panel exists (it won't).
 
     let songs = [];
     const songsData = player.dataset.songs;
@@ -40,48 +88,34 @@
     }
 
     if (songs.length === 0) {
-      // No songs configured
       miniTitle.textContent = '未在播放';
       miniArtist.textContent = '请在 _config.yml 中配置歌曲';
       return;
     }
 
     let currentIndex = 0;
-    let isPlaying = false;
 
     // Initialize
     loadSong(0);
 
-    // Play/Pause
     function togglePlay() {
       if (isPlaying) {
-        pause();
+        audio.pause();
+        isPlaying = false;
       } else {
-        play();
-      }
-    }
-
-    function play() {
-      const promise = audio.play();
-      if (promise !== undefined) {
-        promise.then(function() {
-          isPlaying = true;
-          updatePlayButton();
-        }).catch(function(err) {
+        audio.play().catch(function(err) {
           console.warn('Audio play failed:', err);
         });
+        isPlaying = true;
       }
-    }
-
-    function pause() {
-      audio.pause();
-      isPlaying = false;
       updatePlayButton();
     }
 
     function updatePlayButton() {
-      const icon = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
-      miniPlayBtn.innerHTML = icon;
+      miniPlayBtn.innerHTML = isPlaying
+        ? '<i class="fas fa-pause"></i>'
+        : '<i class="fas fa-play"></i>';
+      updateToggleIcon();
     }
 
     miniPlayBtn.addEventListener('click', function(e) {
@@ -89,7 +123,6 @@
       togglePlay();
     });
 
-    // Previous / Next
     miniPrevBtn.addEventListener('click', function(e) {
       e.stopPropagation();
       prevSong();
@@ -103,13 +136,13 @@
     function prevSong() {
       currentIndex = (currentIndex - 1 + songs.length) % songs.length;
       loadSong(currentIndex);
-      if (isPlaying) play();
+      if (isPlaying) audio.play().catch(function(){});
     }
 
     function nextSong() {
       currentIndex = (currentIndex + 1) % songs.length;
       loadSong(currentIndex);
-      if (isPlaying) play();
+      if (isPlaying) audio.play().catch(function(){});
     }
 
     function loadSong(index) {
@@ -127,7 +160,7 @@
     // Audio events
     audio.addEventListener('ended', function() {
       nextSong();
-      play();
+      audio.play().catch(function(){});
     });
 
     audio.addEventListener('error', function() {
@@ -140,7 +173,6 @@
 
       switch(e.code) {
         case 'Space':
-          if (player.contains(document.activeElement)) return;
           e.preventDefault();
           togglePlay();
           break;
@@ -160,10 +192,9 @@
     });
 
     // Autoplay if enabled
-    const autoplay = player.dataset.autoplay === 'true';
-    if (autoplay && songs.length > 0) {
+    if (player.dataset.autoplay === 'true') {
       setTimeout(function() {
-        play();
+        togglePlay();
       }, 500);
     }
   }

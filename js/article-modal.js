@@ -105,10 +105,10 @@
         // 禁止背景滚动
         document.body.style.overflow = 'hidden';
 
-        // 隐藏主页面音乐播放器，避免与iframe中的播放器重叠
+        // 提升主页面音乐播放器的z-index，使其在弹窗上方显示
         const musicPlayer = document.querySelector('.music-player');
         if (musicPlayer) {
-          musicPlayer.style.display = 'none';
+          musicPlayer.style.zIndex = '10000';
         }
 
         // 添加CSS规则隐藏文章页顶部导航栏
@@ -117,13 +117,13 @@
         style.innerHTML = '.article-modal-iframe::-webkit-scrollbar { display: none; }';
         document.head.appendChild(style);
 
-        // 当iframe加载完成后，向iframe注入CSS隐藏导航栏并上移文章内容
+        // 当iframe加载完成后，向iframe注入CSS隐藏导航栏、上移文章内容、隐藏播放器
         modalIframe.onload = function() {
           try {
             const iframeDoc = modalIframe.contentDocument || modalIframe.contentWindow.document;
             const iframeStyle = iframeDoc.createElement('style');
             iframeStyle.id = 'iframe-nav-style';
-            iframeStyle.innerHTML = '.header { display: none !important; height: 0; margin: 0; padding: 0; } .post-wrapper { margin-top: -60px; }';
+            iframeStyle.innerHTML = '.header { display: none !important; height: 0; margin: 0; padding: 0; } .post-wrapper { margin-top: -60px; } .music-player { display: none !important; }';
             iframeDoc.head.appendChild(iframeStyle);
           } catch (e) {
             console.error('无法访问iframe内容:', e);
@@ -149,7 +149,7 @@
     // 恢复主页面音乐播放器显示
     const musicPlayer = document.querySelector('.music-player');
     if (musicPlayer) {
-      musicPlayer.style.display = '';
+      musicPlayer.style.zIndex = '';
     }
   }
 
