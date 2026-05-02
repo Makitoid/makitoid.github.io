@@ -4,6 +4,11 @@
 (function() {
   'use strict';
 
+  var musicPlayerState = {
+    wasPlaying: false,
+    currentTime: 0
+  };
+
   document.addEventListener('DOMContentLoaded', function() {
     initPjax();
   });
@@ -15,14 +20,19 @@
       return;
     }
 
+    // Check if Pjax is supported
+    if (!Pjax.isSupported()) {
+      console.warn('Pjax is not supported in this browser');
+      return;
+    }
+
     // Initialize Pjax
     // Only replace the main content area, keeping header/footer/player intact
     var pjax = new Pjax({
       selectors: [
         'title',
         'meta[name="description"]',
-        '#main-content',
-        'main.main'
+        '#main-content'
       ],
       switches: {
         'title': function(oldEl, newEl) {
@@ -33,22 +43,30 @@
       timeout: 10000
     });
 
-    // Before Pjax request - show loading state if needed
+    // Before Pjax request - save music player state
     document.addEventListener('pjax:send', function() {
-      // Optional: add loading indicator
-      var mainContent = document.querySelector('#main-content, main.main');
+      var audio = document.querySelector('.music-player-audio');
+      if (audio) {
+        musicPlayerState.wasPlaying = !audio.paused;
+        musicPlayerState.currentTime = audio.currentTime;
+      }
+
+      var mainContent = document.querySelector('#main-content');
       if (mainContent) {
         mainContent.style.opacity = '0.6';
         mainContent.style.transition = 'opacity 0.2s ease';
       }
     });
 
-    // After Pjax completes - reinitialize page-specific scripts
+    // After Pjax completes - restore music player state and reinitialize components
     document.addEventListener('pjax:complete', function() {
-      var mainContent = document.querySelector('#main-content, main.main');
+      var mainContent = document.querySelector('#main-content');
       if (mainContent) {
         mainContent.style.opacity = '1';
       }
+
+      // Restore music player state
+      restoreMusicPlayerState();
 
       // Reinitialize page-specific components
       reinitializeComponents();
@@ -60,9 +78,21 @@
     // On Pjax error - fallback to normal navigation
     document.addEventListener('pjax:error', function(e) {
       console.warn('Pjax error, falling back to normal navigation:', e);
-      // Let the browser handle it normally
       window.location.href = e.triggerElement.href;
     });
+  }
+
+  function restoreMusicPlayerState() {
+    var audio = document.querySelector('.music-player-audio');
+    if (!audio) return;
+
+    if (musicPlayerState.currentTime > 0) {
+      audio.currentTime = musicPlayerState.currentTime;
+    }
+
+    if (musicPlayerState.wasPlaying) {
+      audio.play().catch(function() {});
+    }
   }
 
   // Reinitialize components that need to be set up on each page
