@@ -80,7 +80,7 @@
     // 为AI摘要添加动态主题色效果
     function updateAccentColor() {
       const accentColor = getComputedStyle(document.documentElement)
-        .getPropertyValue('--accent-color').trim() || '#ff6b6b';
+        .getPropertyValue('--accent-color').trim() || '#1c96d0';
 
       document.documentElement.style.setProperty('--ai-accent-color', accentColor);
     }

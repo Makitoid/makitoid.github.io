@@ -140,7 +140,7 @@
 }
 
 .toolbar-btn.active {
-  color: var(--accent-color, #ff6b6b);
+  color: var(--accent-color, #1c96d0);
   background: rgba(0, 0, 0, 0.65);
 }
 

@@ -61,13 +61,13 @@
 
 .toc-content a:hover {
   color: var(--accent-color);
-  background-color: rgba(255, 107, 107, 0.1);
+  background-color: color-mix(in srgb, var(--accent-color) 10%, transparent);
 }
 
 .toc-content a.active {
   color: var(--accent-color);
   font-weight: 500;
-  background-color: rgba(255, 107, 107, 0.1);
+  background-color: color-mix(in srgb, var(--accent-color) 10%, transparent);
   border-left: 3px solid var(--accent-color);
 }
 

@@ -226,7 +226,7 @@
   --ai-btn-bg: rgba(48, 52, 63, 0.75);
   --ai-title-color: #4c4948;
   --ai-btn-color: #fff;
-  --ai-accent-color: var(--accent-color, #ff6b6b);
+  --ai-accent-color: var(--accent-color, #1c96d0);
 }
 
 /* 暗色模式变量 */
@@ -246,7 +246,7 @@ body.dark-theme {
   --ai-btn-bg: #1d1e22;
   --ai-title-color: rgba(255, 255, 255, 0.86);
   --ai-btn-color: rgb(255, 255, 255, 0.9);
-  --ai-accent-color: var(--accent-color, #ff6b6b);
+  --ai-accent-color: var(--accent-color, #1c96d0);
 }
 
 /* 主题切换动画 */
