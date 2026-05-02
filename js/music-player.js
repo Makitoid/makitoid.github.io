@@ -13,34 +13,43 @@
     if (!player) return;
 
     const audio = document.querySelector('.music-player-audio');
-    const mini = player.querySelector('.music-player-mini');
 
     const toggleBtn = player.querySelector('.music-player-toggle');
-    const collapseBtn = mini.querySelector('.music-player-collapse');
     const toggleIcon = toggleBtn ? toggleBtn.querySelector('i') : null;
+
+    // Determine which style is active
+    const playerStyle = player.dataset.style || 'pill';
+    const isPill = playerStyle === 'pill';
+
+    // Get the active mini player element
+    const mini = isPill
+      ? player.querySelector('.music-player-pill')
+      : player.querySelector('.music-player-card');
+
+    if (!mini) return;
+
+    const collapseBtn = isPill
+      ? mini.querySelector('.music-player-pill-collapse')
+      : mini.querySelector('.music-player-collapse');
     const collapseIcon = collapseBtn ? collapseBtn.querySelector('i') : null;
 
     let isPlaying = false;
 
-    function updateToggleIcon() {
-      if (!toggleIcon) return;
-      toggleIcon.className = player.classList.contains('collapsed')
-        ? (isPlaying ? 'fas fa-pause' : 'fas fa-play')
-        : 'fas fa-music';
-    }
-
-    function updateCollapseIcon() {
+    function updateIcons() {
+      const collapsed = player.classList.contains('collapsed');
+      if (toggleIcon) {
+        toggleIcon.className = collapsed
+          ? (isPlaying ? 'fas fa-pause' : 'fas fa-play')
+          : 'fas fa-music';
+      }
       if (collapseIcon) {
-        collapseIcon.className = player.classList.contains('collapsed')
-          ? 'fas fa-chevron-right'
-          : 'fas fa-chevron-left';
+        collapseIcon.className = collapsed ? 'fas fa-chevron-right' : 'fas fa-chevron-left';
       }
     }
 
     function togglePlayer() {
       player.classList.toggle('collapsed');
-      updateToggleIcon();
-      updateCollapseIcon();
+      updateIcons();
       try {
         localStorage.setItem('music-player-collapsed', player.classList.contains('collapsed'));
       } catch (e) {}
@@ -64,18 +73,25 @@
     try {
       if (localStorage.getItem('music-player-collapsed') === 'true') {
         player.classList.add('collapsed');
-        updateToggleIcon();
-        updateCollapseIcon();
+        updateIcons();
       }
     } catch (e) {}
 
-    // Mini controls
-    const miniPlayBtn = mini.querySelector('.music-player-play');
-    const miniPrevBtn = mini.querySelector('.music-player-prev');
-    const miniNextBtn = mini.querySelector('.music-player-next');
-    const miniTitle = mini.querySelector('.music-player-title');
-    const miniArtist = mini.querySelector('.music-player-artist');
-    const miniCover = mini.querySelector('.music-player-cover img');
+    // Controls
+    const playBtn = mini.querySelector('.music-player-play');
+    const prevBtn = mini.querySelector('.music-player-prev');
+    const nextBtn = mini.querySelector('.music-player-next');
+
+    // Info elements depend on style
+    const titleEl = isPill
+      ? mini.querySelector('.music-player-pill-title')
+      : mini.querySelector('.music-player-title');
+    const artistEl = isPill
+      ? mini.querySelector('.music-player-pill-artist')
+      : mini.querySelector('.music-player-artist');
+    const coverEl = isPill
+      ? mini.querySelector('.music-player-pill-cover img')
+      : mini.querySelector('.music-player-cover img');
 
     let songs = [];
     const songsData = player.dataset.songs;
@@ -88,8 +104,8 @@
     }
 
     if (songs.length === 0) {
-      miniTitle.textContent = '未在播放';
-      miniArtist.textContent = '请在 _config.yml 中配置歌曲';
+      if (titleEl) titleEl.textContent = '未在播放';
+      if (artistEl) artistEl.textContent = '请在 _config.yml 中配置歌曲';
       return;
     }
 
@@ -112,37 +128,48 @@
     }
 
     function updatePlayButton() {
-      miniPlayBtn.innerHTML = isPlaying
+      if (!playBtn) return;
+      playBtn.innerHTML = isPlaying
         ? '<i class="fas fa-pause"></i>'
         : '<i class="fas fa-play"></i>';
-      updateToggleIcon();
+      updateIcons();
     }
 
-    miniPlayBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      togglePlay();
-    });
+    if (playBtn) {
+      playBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        togglePlay();
+      });
+    }
 
-    miniPrevBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      prevSong();
-    });
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        prevSong();
+      });
+    }
 
-    miniNextBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      nextSong();
-    });
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nextSong();
+      });
+    }
+
+    function resumeIfPlaying() {
+      if (isPlaying) audio.play().catch(function(){});
+    }
 
     function prevSong() {
       currentIndex = (currentIndex - 1 + songs.length) % songs.length;
       loadSong(currentIndex);
-      if (isPlaying) audio.play().catch(function(){});
+      resumeIfPlaying();
     }
 
     function nextSong() {
       currentIndex = (currentIndex + 1) % songs.length;
       loadSong(currentIndex);
-      if (isPlaying) audio.play().catch(function(){});
+      resumeIfPlaying();
     }
 
     function loadSong(index) {
@@ -150,10 +177,10 @@
       if (!song) return;
 
       audio.src = song.src;
-      miniTitle.textContent = song.title;
-      miniArtist.textContent = song.artist || '-';
-      if (song.cover) {
-        miniCover.src = song.cover;
+      if (titleEl) titleEl.textContent = song.title;
+      if (artistEl) artistEl.textContent = song.artist || '-';
+      if (coverEl && song.cover) {
+        coverEl.src = song.cover;
       }
     }
 
@@ -161,6 +188,8 @@
     audio.addEventListener('ended', function() {
       nextSong();
       audio.play().catch(function(){});
+      isPlaying = true;
+      updatePlayButton();
     });
 
     audio.addEventListener('error', function() {
