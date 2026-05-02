@@ -47,6 +47,17 @@
   --tag-background-color: #ffffff;
   --card-background-color: #ffffff;
 }
+//- Dark mode color variables (accent inherits from light mode)
+html.dark-mode,
+body.dark-mode {
+  --primary-color: #e0e0e0;
+  --secondary-color: #b0b0b0;
+  --background-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --overlay-color: rgba(0, 0, 0, 0.8);
+  --tag-background-color: #1d1d1d;
+  --card-background-color: #262626;
+}
 </style><link rel="stylesheet" href="https://cdn1.tianli0.top/gh/qxchuckle/Post-Summary-AI/chuckle-post-ai.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div id="app"><header class="header navbar-bubble"><nav class="nav"><div class="nav-container"><div class="nav-logo"><a href="/"><span class="nav-title">Makitoid's Blog</span></a></div><div class="nav-menu"><a class="nav-item" href="/">首页</a><a class="nav-item" href="/about/">关于</a><div class="nav-item has-submenu"><span class="nav-link">文章</span><div class="submenu"><a class="submenu-item" href="/archives/">归档</a><a class="submenu-item" href="/categories/">分类</a><a class="submenu-item" href="/tags/">标签</a></div></div><a class="nav-item" href="/link/">友链</a><!-- 搜索按钮--><div class="search-toggle"><i class="fas fa-search"></i></div></div><div class="nav-toggle"><span></span><span></span><span></span></div></div></nav></header><div class="search-overlay"><div class="search-container"><div class="search-form"><input class="search-input" type="text" placeholder="搜索文章..."/><div class="search-close">×</div></div><div class="search-results"></div></div></div><main class="main"><div class="post-wrapper"><article class="post-container"><div class="post-header"><h1 class="post-title">Tags</h1><div class="post-subtitle">探索与 &quot;C&quot; 相关的所有文章</div></div><div class="tags-content"><!-- 显示特定标签的文章列表--><div class="tag-posts"><div class="tag-header"><div class="tag-info"><h2 class="tag-name"> <i class="fas fa-tag"></i> C</h2><div class="tag-description">共有 1 篇文章</div></div><div class="tag-back"><a href="/tags/"><i class="fas fa-arrow-left"></i> 返回所有标签</a></div></div><div class="post-list"><!-- 根据索引创建不同大小的卡片--><div class="post-item post-item--large"><div class="post-item-inner"><div class="post-item-title"><a href="/2026/03/08/vs2026_printf_warning/">VS2026对C语言printf报警的解决方案</a></div><div class="post-item-excerpt"><!-- 使用 strip_html 过滤器移除 HTML 标签后再截取文本--><p> 前一阵子一个学C朋友问我为什么在Visual Studio 2026里面写C语言代码，用printf()函数会报警warning。我研究了一下，在这里分享给大家。
 先说结论这个东西是MSVC导致的。MSVC对C的支持本身就不好，而新更新的C++ 20标准更推荐使用printf_s函数，所以就会导致这个warning。
 如何解决？1.第一种：更换标准在Visual Studio中的“项目”选项卡中点击“xxx和属性”将语言标准改成别的，只要不是C++ 20就行。

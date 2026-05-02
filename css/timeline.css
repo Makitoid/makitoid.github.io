@@ -20,7 +20,7 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #ff6b6b;
+  background: var(--accent-color, #ff6b6b);
   z-index: 1;
 }
 
