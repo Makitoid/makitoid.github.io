@@ -1,125 +1,74 @@
 // 分类页面展开/折叠功能
 document.addEventListener('DOMContentLoaded', function() {
-  // 检查是否为展开式布局
-  const isAccordionLayout = document.querySelector('.categories-accordion');
-  if (!isAccordionLayout) return; // 如果不是展开式布局，不执行以下代码
+  initCategoriesAccordion();
+});
 
-  // 获取主题配置
+function initCategoriesAccordion() {
+  const isAccordionLayout = document.querySelector('.categories-accordion');
+  if (!isAccordionLayout) return;
+
   const accordionAnimation = window.theme && window.theme.categories && window.theme.categories.accordion_animation !== false;
 
-  // 获取所有分类头部
-  const categoryHeaders = document.querySelectorAll('.category-header');
-
-  // 为每个分类头部添加点击事件
-  categoryHeaders.forEach(header => {
-    // 移除旧的事件监听器（如果存在）
-    header.removeEventListener('click', handleCategoryClick);
-    
-    // 添加新的事件监听器（使用冒泡阶段）
-    header.addEventListener('click', handleCategoryClick, false);
-  });
-
-  // 处理分类点击的函数
-  function handleCategoryClick(e) {
-    // 阻止默认行为，防止链接跳转
-    e.preventDefault();
-    
-    // 获取父级分类区块
-    const categorySection = this.closest('.category-section');
-    const isActive = categorySection.classList.contains('active');
-
-    // 获取文章列表区域
-    const categoryPosts = categorySection.querySelector('.category-posts');
-    const noPosts = categorySection.querySelector('.no-posts');
-
-    // 如果当前分类已经是展开状态，则折叠它
-    if (isActive) {
-      categorySection.classList.remove('active');
-
-      if (categoryPosts) {
-        categoryPosts.style.display = 'none';
-      }
-
-      if (noPosts) {
-        noPosts.style.display = 'none';
-      }
-    } else {
-      // 如果当前分类是折叠状态，则展开它并折叠其他分类
-
-      // 先折叠所有其他分类
-      document.querySelectorAll('.category-section').forEach(section => {
-        if (section !== categorySection) { // 不处理当前点击的分类
-          section.classList.remove('active');
-
-          const posts = section.querySelector('.category-posts');
-          const empty = section.querySelector('.no-posts');
-
-          if (posts) {
-            posts.style.display = 'none';
-          }
-
-          if (empty) {
-            empty.style.display = 'none';
-          }
-        }
+  function setVisible(el, visible) {
+    if (!el) return;
+    el.style.display = visible ? 'block' : 'none';
+    if (visible && accordionAnimation) {
+      el.style.opacity = '0';
+      requestAnimationFrame(function() {
+        el.style.opacity = '1';
       });
+    }
+  }
 
-      // 展开当前分类
-      categorySection.classList.add('active');
+  function collapseAll(exceptSection) {
+    document.querySelectorAll('.category-section').forEach(function(section) {
+      if (section === exceptSection) return;
+      section.classList.remove('active');
+      setVisible(section.querySelector('.category-posts'), false);
+      setVisible(section.querySelector('.no-posts'), false);
+    });
+  }
 
-      if (categoryPosts) {
-        categoryPosts.style.display = 'block';
-        if (accordionAnimation) {
-          // 添加淡入效果
-          categoryPosts.style.opacity = '0';
-          setTimeout(() => {
-            categoryPosts.style.opacity = '1';
-          }, 10);
-        }
-      }
+  function handleCategoryClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-      if (noPosts) {
-        noPosts.style.display = 'block';
-        if (accordionAnimation) {
-          // 添加淡入效果
-          noPosts.style.opacity = '0';
-          setTimeout(() => {
-            noPosts.style.opacity = '1';
-          }, 10);
-        }
-      }
+    const section = this.closest('.category-section');
+    const isActive = section.classList.contains('active');
 
-      // 添加平滑滚动效果
-      setTimeout(() => {
-        categorySection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (isActive) {
+      section.classList.remove('active');
+      setVisible(section.querySelector('.category-posts'), false);
+      setVisible(section.querySelector('.no-posts'), false);
+    } else {
+      collapseAll(section);
+      section.classList.add('active');
+      setVisible(section.querySelector('.category-posts'), true);
+      setVisible(section.querySelector('.no-posts'), true);
+
+      setTimeout(function() {
+        section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 100);
     }
-
-    // 阻止事件冒泡
-    e.stopPropagation();
-    return false;
   }
+
+  document.querySelectorAll('.category-header').forEach(function(header) {
+    header.addEventListener('click', handleCategoryClick);
+  });
 
   // 如果URL中包含分类参数，自动展开对应分类
-  const urlParams = new URLSearchParams(window.location.search);
-  const categoryParam = urlParams.get('category');
-
+  const categoryParam = new URLSearchParams(window.location.search).get('category');
   if (categoryParam) {
-    const targetCategory = document.querySelector(`.category-section[data-category="${categoryParam}"]`);
-    if (targetCategory) {
-      const header = targetCategory.querySelector('.category-header');
-      if (header) {
-        // 延迟执行，确保页面完全加载
-        setTimeout(() => {
-          // 创建自定义事件并触发
-          const clickEvent = new MouseEvent('click', {
-            view: window,
-            bubbles: true,
-            cancelable: true
-          });
-          header.dispatchEvent(clickEvent);
-        }, 500);
-      }
+    const target = document.querySelector('.category-section[data-category="' + categoryParam + '"]');
+    if (target) {
+      setTimeout(function() {
+        handleCategoryClick.call(target.querySelector('.category-header'), {
+          preventDefault: function() {},
+          stopPropagation: function() {}
+        });
+      }, 500);
     }
   }
-});
+}
+
+window.initCategoriesAccordion = initCategoriesAccordion;
