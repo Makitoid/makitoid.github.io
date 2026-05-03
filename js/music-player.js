@@ -17,20 +17,11 @@
     const toggleBtn = player.querySelector('.music-player-toggle');
     const toggleIcon = toggleBtn ? toggleBtn.querySelector('i') : null;
 
-    // Determine which style is active
-    const playerStyle = player.dataset.style || 'pill';
-    const isPill = playerStyle === 'pill';
-
-    // Get the active mini player element
-    const mini = isPill
-      ? player.querySelector('.music-player-pill')
-      : player.querySelector('.music-player-card');
+    const mini = player.querySelector('.music-player-pill');
 
     if (!mini) return;
 
-    const collapseBtn = isPill
-      ? mini.querySelector('.music-player-pill-collapse')
-      : mini.querySelector('.music-player-collapse');
+    const collapseBtn = mini.querySelector('.music-player-pill-collapse');
     const collapseIcon = collapseBtn ? collapseBtn.querySelector('i') : null;
 
     let isPlaying = false;
@@ -81,17 +72,13 @@
     const playBtn = mini.querySelector('.music-player-play');
     const prevBtn = mini.querySelector('.music-player-prev');
     const nextBtn = mini.querySelector('.music-player-next');
+    const volumeBtn = mini.querySelector('.music-player-volume-btn');
+    const volumeSlider = mini.querySelector('.music-player-volume-slider');
 
-    // Info elements depend on style
-    const titleEl = isPill
-      ? mini.querySelector('.music-player-pill-title')
-      : mini.querySelector('.music-player-title');
-    const artistEl = isPill
-      ? mini.querySelector('.music-player-pill-artist')
-      : mini.querySelector('.music-player-artist');
-    const coverEl = isPill
-      ? mini.querySelector('.music-player-pill-cover img')
-      : mini.querySelector('.music-player-cover img');
+    // Info elements
+    const titleEl = mini.querySelector('.music-player-pill-title');
+    const artistEl = mini.querySelector('.music-player-pill-artist');
+    const coverEl = mini.querySelector('.music-player-pill-cover img');
 
     let songs = [];
     const songsData = player.dataset.songs;
@@ -113,6 +100,53 @@
 
     // Initialize
     loadSong(0);
+
+    // Set initial volume to 30%
+    audio.volume = 0.3;
+    if (volumeSlider) volumeSlider.value = 30;
+
+    function updateVolumeIcon() {
+      if (!volumeBtn) return;
+      const icon = volumeBtn.querySelector('i');
+      if (!icon) return;
+      if (audio.volume === 0 || audio.muted) {
+        icon.className = 'fas fa-volume-off';
+      } else if (audio.volume < 0.5) {
+        icon.className = 'fas fa-volume-down';
+      } else {
+        icon.className = 'fas fa-volume-up';
+      }
+    }
+
+    function setVolume(value) {
+      const vol = Math.max(0, Math.min(100, value)) / 100;
+      audio.volume = vol;
+      audio.muted = vol === 0;
+      if (volumeSlider) volumeSlider.value = value;
+      updateVolumeIcon();
+    }
+
+    if (volumeSlider) {
+      volumeSlider.addEventListener('input', function(e) {
+        e.stopPropagation();
+        setVolume(parseInt(e.target.value, 10));
+      });
+    }
+
+    if (volumeBtn) {
+      volumeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (audio.volume > 0) {
+          audio.dataset.lastVolume = audio.volume;
+          setVolume(0);
+        } else {
+          const last = parseFloat(audio.dataset.lastVolume || '0.3');
+          setVolume(Math.round(last * 100));
+        }
+      });
+    }
+
+    updateVolumeIcon();
 
     function togglePlay() {
       if (isPlaying) {
