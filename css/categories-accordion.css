@@ -44,8 +44,8 @@
   padding: var(--spacing-md) var(--spacing-lg);
   cursor: pointer;
   transition: background-color var(--transition-fast);
-  -webkit-user-select: none;
-  user-select: none;
+  -webkit-user-select: none; /* 防止文本选择 */
+  user-select: none; /* 防止文本选择 */
 }
 
 .category-header:hover {
@@ -123,41 +123,9 @@
   }
 }
 
-/* 空状态 - 通用 */
-.empty-state {
-  text-align: center;
-}
-
-.empty-state i {
-  color: var(--secondary-color);
-  margin-bottom: var(--spacing-md);
-}
-
-.empty-state h3 {
-  margin-bottom: var(--spacing-sm);
-}
-
-.empty-state p {
-  color: var(--secondary-color);
-  margin-bottom: var(--spacing-md);
-}
-
-.empty-state .button {
-  display: inline-block;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  background: var(--accent-color);
-  color: white;
-  border-radius: var(--radius-md);
-  text-decoration: none;
-  transition: background var(--transition-fast);
-}
-
-.empty-state .button:hover {
-  background: var(--primary-color);
-}
-
-/* 空状态 - 分类内 */
+/* 空状态 */
 .no-posts {
+  text-align: center;
   padding: var(--spacing-xl);
   opacity: 1;
   transition: opacity 0.3s ease;
@@ -173,18 +141,34 @@
 
 .no-posts .empty-state i {
   font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-md);
 }
 
 .no-posts .empty-state h3 {
   font-size: 1.2rem;
+  margin-bottom: var(--spacing-sm);
 }
 
 .no-posts .empty-state p {
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-md);
   font-size: 0.9rem;
 }
 
 .no-posts .empty-state .button {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: var(--accent-color);
+  color: white;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background var(--transition-fast);
   font-size: 0.9rem;
+}
+
+.no-posts .empty-state .button:hover {
+  background: var(--primary-color);
 }
 
 /* 无分类状态 */
@@ -195,6 +179,7 @@
 
 .no-categories .empty-state i {
   font-size: 3rem;
+  color: var(--secondary-color);
   margin-bottom: var(--spacing-lg);
 }
 
@@ -204,7 +189,22 @@
 }
 
 .no-categories .empty-state p {
+  color: var(--secondary-color);
   margin-bottom: var(--spacing-lg);
+}
+
+.no-categories .empty-state .button {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: var(--accent-color);
+  color: white;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background var(--transition-fast);
+}
+
+.no-categories .empty-state .button:hover {
+  background: var(--primary-color);
 }
 
 /* 深色模式 */

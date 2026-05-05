@@ -19,7 +19,7 @@
   height: 50px;
   border: 5px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  border-top-color: var(--accent-color, #1c96d0);
+  border-top-color: var(--accent-color, #ff6b6b);
   animation: spin 1s ease-in-out infinite;
 }
 
@@ -34,5 +34,5 @@
 
 .dark-mode .loading-spinner {
   border: 5px solid rgba(255, 255, 255, 0.1);
-  border-top-color: var(--accent-color, #1c96d0);
+  border-top-color: var(--accent-color, #ff6b6b);
 }
