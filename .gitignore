@@ -1,8 +1,34 @@
-.DS_Store
-Thumbs.db
-db.json
-*.log
+# Dependencies
 node_modules/
+
+# Production
 public/
 .deploy*/
+
+# Debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Hexo
+db.json
 _multiconfig.yml
