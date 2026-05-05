@@ -5,7 +5,7 @@ logo: /images/0.webp
 # 首页图
 # Hero Section
 hero:
-  enable: flase  # 是否开启首页图片
+  enable: false  # 是否开启首页图片
   background_image: /images/3.jpeg
   typing_text: 不忘初心 方得始终
   typing_speed: 100

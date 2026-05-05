@@ -2,14 +2,14 @@
 # 关于页面卡片配置
 # 每个卡片包含标题、背景图和描述文本
 
-#cards:
-  #- title: "生活"
-    #image: "/images/13.jpg"
+cards:
+  - title: "数码"
+    image: "/images/4.jpg"
     #link: "https://github.com/forever218/hexo-theme-magzine"
-    #background: "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #ffecd2 100%)"
-    #description: "享受生活中的每一个瞬间，发现平凡中的美好"
+    background: "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #ffecd2 100%)"
+    description: "研究点有意思的"
     #details: "探索美食、旅行、摄影，记录生活的点点滴滴"
-    #icon: "fas fa-heart"
-    #layout: "portrait"  # portrait 或 landscape
-    #size: "large"       # large, medium 或 small
+    icon: "fas fa-heart"
+    layout: "portrait"  # portrait 或 landscape
+    size: "medium"       # large, medium 或 small
 
