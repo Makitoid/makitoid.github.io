@@ -5,7 +5,7 @@ logo: /images/0.webp
 # 首页图
 # Hero Section
 hero:
-  enable: true  # 是否开启首页图片
+  enable: flase  # 是否开启首页图片
   background_image: /images/3.jpeg
   typing_text: 不忘初心 方得始终
   typing_speed: 100
@@ -74,8 +74,8 @@ footer:
   # Footer centered image with link (页脚居中图片及链接)
   image:
     enable: false  # 是否显示图片，设为true显示
-    src: "https://s21.ax1x.com/2024/08/23/pAFm0cq.png"  # 图片URL
-    link: "https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"  # 图片链接地址
+   # src: "https://s21.ax1x.com/2024/08/23/pAFm0cq.png"  # 图片URL
+   # link: "https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"  # 图片链接地址
     alt: "Footer Image"  # 图片替代文本
   badges:
       - link: https://hexo.io/ #徽标指向网站链接
@@ -85,6 +85,13 @@ footer:
         shields: https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg
         message: 本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可
 
+# 启动blog封面组件,相关文字和轮播图在themes\magzine\layout\_partial\cover.pug里修改
+cover:
+  enable: false
+
+# Sakana 小人组件
+sakana:
+  enable: false
 
 
 # Features (功能)
@@ -196,11 +203,24 @@ inject:
     # - <script src="/js/xxx"></script>
     - <script src="/js/ai.js"></script> #ai
     - <script src="/js/postai.js"></script> #ai
+    #以下是数学公式支持
+    - <script src="/js/math-support.js"></script>  # 数学公式
+    #以下是鼠标点击效果,仅可启用一个
+    - <script src="/js/click-heart.js"></script> # 鼠标点击爱心文字特效
+    # - <script src="/js/click-fireworks.js"></script> # 鼠标点击三角烟花特效
+    
+    #以下是背景动画特效
+    - <script src="/js/falling-leaves.js"></script> # 梧桐落叶特效
+    #以下是语言切换支持
+    - <script src="/js/lang-switch.js"></script> # 语言切换脚本
+    
+# 语言切换功能
+#本主题翻译功能不是很成熟,不满足i18n需求,只满足中英转换,请前往themes\magzine\source\js\lang-switch.js自定义翻译文本
 
 
 # AI摘要配置
 ai_summary:
-  enable: false  # 是否启用AI摘要功能，默认关闭
+  enable: true  # 是否启用AI摘要功能，默认关闭
   api_key: ""  # DeepSeek API密钥
   summary_directly: false  # 是否直接生成摘要，默认为false（需要点击按钮生成）
   # 其他可选配置
@@ -243,5 +263,6 @@ CDN:
   # Custom format
   # For example: https://cdn.staticfile.org/${cdnjs_name}/${version}/${min_cdnjs_file}
   custom_format: # https://npm.elemecdn.com/${name}@latest/${file}
+
 
   option:
