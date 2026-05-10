@@ -53,9 +53,10 @@ social:
 menu:
   首页: /
   关于: /about/
+  碎碎念: /murmur/
   文章:
     归档: /archives/
-    分类: /categories/    
+    分类: /categories/
     标签: /tags/
   友链: /link/
   #11:
@@ -92,6 +93,13 @@ cover:
 # Sakana 小人组件
 sakana:
   enable: false
+
+# 碎碎念页面配置
+murmur:
+  enable: true  # 是否开启碎碎念页面
+  banner:
+    enable: true  # 是否显示顶部横幅
+    background_image: /images/1.webp  # 横幅背景图
 
 
 # Features (功能)
@@ -220,7 +228,7 @@ inject:
 
 # AI摘要配置
 ai_summary:
-  enable: true  # 是否启用AI摘要功能，默认关闭
+  enable: false  # 是否启用AI摘要功能，默认关闭
   api_key: ""  # DeepSeek API密钥
   summary_directly: false  # 是否直接生成摘要，默认为false（需要点击按钮生成）
   # 其他可选配置

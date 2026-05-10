@@ -28,7 +28,7 @@ const CONFIG = {
     avif: 80,
     gif: 80,
   },
-  minSize: 10240,
+  minSize: 2097152, // 2MB = 2 * 1024 * 1024 bytes
 };
 // ================
 
