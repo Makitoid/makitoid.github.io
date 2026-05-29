@@ -94,12 +94,27 @@ cover:
 sakana:
   enable: false
 
+# 调色板组件 (主题色切换)
+color_picker:
+  enable: false  # 是否开启右上角主题调色板
+
 # 碎碎念页面配置
 murmur:
   enable: true  # 是否开启碎碎念页面
   banner:
     enable: true  # 是否显示顶部横幅
     background_image: /images/1.webp  # 横幅背景图
+
+# Music Player (悬浮音乐播放器)
+music_player:
+  enable: false   #是否启用音乐播放器
+  style: "pill"  #播放器形态: "pill" (圆条型) 或 "card" (卡片模式)
+  pc_position: "header" # PC端位置: "header"(塞入导航菜单作者名字右侧) 或 "floating"(悬浮且可以自由拖拽)
+  autoplay: false  # 是否自动播放，默认为false
+  default_cover: /images/0.webp  # 默认封面图
+  opacity: 0.80  # 播放器背景透明度，取值范围0-1，默认0.8
+  songs:
+    # 下面是示例歌曲配置，支持本地文件和外链，封面图可选
 
 
 # Features (功能)
@@ -108,6 +123,10 @@ features:
   smooth_scroll: true
   back_to_top: true  # 是否开启返回顶部按钮
   loading_animation: true  # 是否开启加载动画，默认开启
+
+# 字数统计与阅读时长 (需安装插件: npm install hexo-wordcount)
+wordcount:
+  enable: true  # 是否在文章元数据区域显示字数和预计阅读时间
 
 # Code Block Settings (代码高亮)
 code_block:
@@ -198,6 +217,18 @@ theme_config:
     minify: true
     # 缓存
     cache: true
+
+# 图片压缩功能 (需安装 sharp 依赖: npm install sharp)
+compress_images:
+  enable: true       # 是否开启图片压缩 (默认关闭，改为 true 开启)
+  min_size: 1024000      # 最小压缩大小，小于此大小(10KB)的图片不压缩
+  ignore: []           # 忽略的图片格式，例如: ['.gif', '.svg']
+  quality:             # 各种格式的压缩质量 (0-100)
+    jpeg: 60
+    png: 60
+    webp: 70
+    avif: 60
+    gif: 60
 
 # Custom code injection
 inject:

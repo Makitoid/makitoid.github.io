@@ -6,6 +6,7 @@ tag:
 categories: 闲聊杂谈
 cover: /images/vs2026_printf_warning/cover.png
 date: 2026/3/15 20:20
+sticky: 1
 ---
 
  前一阵子一个学C朋友问我为什么在Visual Studio 2026里面写C语言代码，用``printf()``函数会报警warning。
