@@ -32,3 +32,7 @@ Thumbs.db
 # Hexo
 db.json
 _multiconfig.yml
+
+# qoder
+.qoder
+agents.md
