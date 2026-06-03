@@ -7,14 +7,15 @@
     document.documentElement.classList.add('dark-mode');
   }
 })();
+</script><script>if (window.parent !== window) {
+  document.documentElement.classList.add('is-iframe');
+}
 </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="icon" href="/images/0.webp">
 <link rel="stylesheet" href="/css/main.css">
 
 <link rel="stylesheet" href="/css/tags.css">
 
 <link rel="stylesheet" href="/css/categories.css">
-
-<link rel="stylesheet" href="/css/categories-accordion.css">
 
 <link rel="stylesheet" href="/css/highlight.css">
 
@@ -39,6 +40,8 @@
 <link rel="stylesheet" href="/css/loading-animation.css">
 
 <link rel="stylesheet" href="/css/article-modal.css">
+
+<link rel="stylesheet" href="/css/music-player.css">
 <!-- 条件加载关于页面样式--><style>:root {
   --primary-color: #1a1a1a;
   --secondary-color: #666666;
@@ -49,81 +52,10 @@
   --tag-background-color: #ffffff;
   --card-background-color: #ffffff;
 }
-</style><link rel="stylesheet" href="https://cdn1.tianli0.top/gh/qxchuckle/Post-Summary-AI/chuckle-post-ai.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="app"><header class="header navbar-bubble"><nav class="nav"><div class="nav-container"><div class="nav-logo"><a href="/"><span class="nav-title">Makitoid's Blog</span></a></div><div class="nav-menu"><a class="nav-item" href="/">首页</a><a class="nav-item" href="/about/">关于</a><a class="nav-item" href="/murmur/">碎碎念</a><div class="nav-item has-submenu"><span class="nav-link">文章</span><div class="submenu"><a class="submenu-item" href="/archives/">归档</a><a class="submenu-item" href="/categories/">分类</a><a class="submenu-item" href="/tags/">标签</a></div></div><a class="nav-item active" href="/link/">友链</a><!-- 搜索按钮--><div class="search-toggle"><i class="fas fa-search"></i></div></div><div class="nav-toggle"><span></span><span></span><span></span></div></div></nav></header><div class="theme-color-picker-container"><label for="theme-color-picker" title="自定义主题色"><i class="fas fa-palette"></i></label><input type="color" id="theme-color-picker" value="#1c96d0"/></div><style>.theme-color-picker-container {
-  position: fixed;
-  top: 85px; /* 位于导航栏下方 */
-  right: 20px;
-  z-index: 999;
-  width: 40px;
-  height: 40px;
-  background: var(--card-background-color, #ffffff);
-  border-radius: 50%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.theme-color-picker-container:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-}
-.theme-color-picker-container label {
-  cursor: pointer;
-  color: var(--accent-color);
-  font-size: 1.2rem;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-}
-#theme-color-picker {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-/* 暗色模式适配 */
-body.dark-mode .theme-color-picker-container {
-  background: #262626;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-</style><script>// 1. 立即执行脚本：页面一加载就读取用户保存的颜色，防止颜色闪烁 (FOUC)
-(function() {
-  var savedColor = localStorage.getItem('custom-accent-color');
-  if (savedColor) {
-    document.documentElement.style.setProperty('--accent-color', savedColor);
-  }
-})();
-
-// 2. DOM加载完成后绑定调色板事件
-document.addEventListener('DOMContentLoaded', function() {
-  const colorPicker = document.getElementById('theme-color-picker');
-  const root = document.documentElement;
-  
-  // 初始化颜色选择器的UI显示值
-  const savedColor = localStorage.getItem('custom-accent-color');
-  if (savedColor) {
-    colorPicker.value = savedColor;
-  }
-
-  // 监听：颜色面板拖动时（实时更新整个网站的颜色）
-  colorPicker.addEventListener('input', function(e) {
-    const newColor = e.target.value;
-    root.style.setProperty('--accent-color', newColor);
-  });
-
-  // 监听：颜色选择完毕关闭面板时（保存到浏览器缓存，下次打开依然有效）
-  colorPicker.addEventListener('change', function(e) {
-    const newColor = e.target.value;
-    localStorage.setItem('custom-accent-color', newColor);
-  });
-});</script><div class="search-overlay"><div class="search-container"><div class="search-form"><input class="search-input" type="text" placeholder="搜索文章..."/><div class="search-close">×</div></div><div class="search-results"></div></div></div><main class="main"><main class="link-page"><div class="link-header"><h1>友情链接</h1><p class="link-description">春江潮水连海平，海上明月共潮生</p></div><div class="link-categories"><div class="link-grid"><div class="link-card"><div class="link-avatar"><img src="https://wmimg.com/i/1169/2024/09/66ec1739c38a0.png" alt="Peter267"/></div><div class="link-info"><h3 class="link-name"><a href="https://peter267.github.io" target="_blank">Peter267</a></h3></div><div class="link-tooltip"><div class="tooltip-content"><h4>Peter267</h4><p>无限进步！</p></div></div></div><div class="link-card"><div class="link-avatar"><img src="https://2am.top/images/0.gif" alt="未来的回忆"/></div><div class="link-info"><h3 class="link-name"><a href="https://2am.top" target="_blank">未来的回忆</a></h3></div><div class="link-tooltip"><div class="tooltip-content"><h4>未来的回忆</h4><p>人生而自由，却无往不在枷锁之中</p></div></div></div></div><!-- 添加友链板块--><div class="add-link-section"><div class="add-link-card"><h3 class="add-link-title">添加友链</h3><div class="add-link-content"><p>欢迎互换友链！您需要遵循以下规则：</p><ol class="add-link-rules"><li>已在贵站添加我的友链，信息：</li><pre class="code-block"><code>- name: 未来的回忆
-  link: https://2am.top
-  avatar: https://2am.top/images/0.gif
-  description: 人生而自由，却无往不在枷锁之中</code></pre><li>贵站没有违法内容</li><li>您可以使用以下模板在评论区申请：</li><pre class="code-block"><code>- name: 
+</style><link rel="stylesheet" href="https://cdn1.tianli0.top/gh/qxchuckle/Post-Summary-AI/chuckle-post-ai.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="app"><header class="header navbar-bubble"><nav class="nav"><div class="nav-container"><div class="nav-logo"><a href="/"><span class="nav-title">Makitoid's Blog</span></a></div><div class="nav-menu"><a class="nav-item" href="/">首页</a><a class="nav-item" href="/about/">关于</a><a class="nav-item" href="/murmur/">碎碎念</a><div class="nav-item has-submenu"><span class="nav-link">文章</span><div class="submenu"><a class="submenu-item" href="/archives/">归档</a><a class="submenu-item" href="/categories/">分类</a><a class="submenu-item" href="/tags/">标签</a></div></div><a class="nav-item active" href="/link/">友链</a><!-- 搜索按钮--><div class="search-toggle"><i class="fas fa-search"></i></div></div><div class="nav-toggle"><span></span><span></span><span></span></div></div></nav></header><div class="search-overlay"><div class="search-container"><div class="search-form"><input class="search-input" type="text" placeholder="搜索文章..."/><div class="search-close">×</div></div><div class="search-results"></div></div></div><main class="main"><main class="link-page"><div class="link-header"><h1>友情链接</h1><p class="link-description">春江潮水连海平，海上明月共潮生</p></div><div class="link-categories"><div class="link-grid"><div class="link-card"><div class="link-avatar"><img src="https://wmimg.com/i/1169/2024/09/66ec1739c38a0.png" alt="Peter267"/></div><div class="link-info"><h3 class="link-name"><a href="https://peter267.github.io" target="_blank">Peter267</a></h3></div><div class="link-tooltip"><div class="tooltip-content"><h4>Peter267</h4><p>无限进步！</p></div></div></div><div class="link-card"><div class="link-avatar"><img src="https://2am.top/images/0.gif" alt="未来的回忆"/></div><div class="link-info"><h3 class="link-name"><a href="https://2am.top" target="_blank">未来的回忆</a></h3></div><div class="link-tooltip"><div class="tooltip-content"><h4>未来的回忆</h4><p>人生而自由，却无往不在枷锁之中</p></div></div></div><div class="link-card"><div class="link-avatar"><img src="https://funingna-wakawaka.github.io/images/0.png" alt="胡杨怕火"/></div><div class="link-info"><h3 class="link-name"><a href="https://funingna-wakawaka.github.io/" target="_blank">胡杨怕火</a></h3></div><div class="link-tooltip"><div class="tooltip-content"><h4>胡杨怕火</h4><p>传递笑容魔法的Ciallo～(∠・ω&lt; )⌒☆</p></div></div></div><div class="link-card"><div class="link-avatar"><img src="https://blog.jursin.top/avatar.png" alt="Jursin"/></div><div class="link-info"><h3 class="link-name"><a href="https://blog.jursin.top/" target="_blank">Jursin</a></h3></div><div class="link-tooltip"><div class="tooltip-content"><h4>Jursin</h4><p>以清净心看世界，以欢喜心过生活，以平常心生情味，以柔软心除挂碍。</p></div></div></div><div class="link-card"><div class="link-avatar"><img alt="Lyang1273"/></div><div class="link-info"><h3 class="link-name"><a href="lyang1273.github.io" target="_blank">Lyang1273</a></h3></div><div class="link-tooltip"><div class="tooltip-content"><h4>Lyang1273</h4><p>Lyang1273的个人网站</p></div></div></div></div><!-- 添加友链板块--><div class="add-link-section"><div class="add-link-card"><h3 class="add-link-title">添加友链</h3><div class="add-link-content"><p>欢迎互换友链！您需要遵循以下规则：</p><ol class="add-link-rules"><li>已在贵站添加我的友链，信息：</li><pre class="code-block"><code>- name: Makitoid
+  link: https://makitoid.github.io
+  avatar: https://makitoid.github.io/images/0.webp
+  description: Somehow?</code></pre><li>贵站没有违法内容</li><li>您可以使用以下模板发送邮件：</li><pre class="code-block"><code>- name: 
   link: 
   avatar: 
   description: </code></pre></ol><p>我会常去串门的😊~</p></div></div></div><!-- 评论区域--><div class="comments-section"></div></div></main><!-- 友链页面样式--><style>.link-page {
@@ -427,6 +359,8 @@ body.dark-mode .code-block code {
 <script src="/js/loading-animation.js"></script>
 
 <script src="/js/article-modal.js"></script>
+
+<script src="/js/music-player.js"></script>
 <script>window.theme = {
   features: {"dark_mode":true,"smooth_scroll":true,"back_to_top":true,"loading_animation":true},
   code_block: {"height_limit":200,"enable_folding":true,"max_height":"300px","show_lang":true},

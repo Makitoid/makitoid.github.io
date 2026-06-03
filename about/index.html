@@ -7,14 +7,15 @@
     document.documentElement.classList.add('dark-mode');
   }
 })();
+</script><script>if (window.parent !== window) {
+  document.documentElement.classList.add('is-iframe');
+}
 </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="icon" href="/images/0.webp">
 <link rel="stylesheet" href="/css/main.css">
 
 <link rel="stylesheet" href="/css/tags.css">
 
 <link rel="stylesheet" href="/css/categories.css">
-
-<link rel="stylesheet" href="/css/categories-accordion.css">
 
 <link rel="stylesheet" href="/css/highlight.css">
 
@@ -39,6 +40,8 @@
 <link rel="stylesheet" href="/css/loading-animation.css">
 
 <link rel="stylesheet" href="/css/article-modal.css">
+
+<link rel="stylesheet" href="/css/music-player.css">
 <!-- 条件加载关于页面样式-->
 <link rel="stylesheet" href="/css/about.css">
 <style>:root {
@@ -51,78 +54,7 @@
   --tag-background-color: #ffffff;
   --card-background-color: #ffffff;
 }
-</style><link rel="stylesheet" href="https://cdn1.tianli0.top/gh/qxchuckle/Post-Summary-AI/chuckle-post-ai.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="app"><header class="header navbar-bubble"><nav class="nav"><div class="nav-container"><div class="nav-logo"><a href="/"><span class="nav-title">Makitoid's Blog</span></a></div><div class="nav-menu"><a class="nav-item" href="/">首页</a><a class="nav-item active" href="/about/">关于</a><a class="nav-item" href="/murmur/">碎碎念</a><div class="nav-item has-submenu"><span class="nav-link">文章</span><div class="submenu"><a class="submenu-item" href="/archives/">归档</a><a class="submenu-item" href="/categories/">分类</a><a class="submenu-item" href="/tags/">标签</a></div></div><a class="nav-item" href="/link/">友链</a><!-- 搜索按钮--><div class="search-toggle"><i class="fas fa-search"></i></div></div><div class="nav-toggle"><span></span><span></span><span></span></div></div></nav></header><div class="theme-color-picker-container"><label for="theme-color-picker" title="自定义主题色"><i class="fas fa-palette"></i></label><input type="color" id="theme-color-picker" value="#1c96d0"/></div><style>.theme-color-picker-container {
-  position: fixed;
-  top: 85px; /* 位于导航栏下方 */
-  right: 20px;
-  z-index: 999;
-  width: 40px;
-  height: 40px;
-  background: var(--card-background-color, #ffffff);
-  border-radius: 50%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.theme-color-picker-container:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-}
-.theme-color-picker-container label {
-  cursor: pointer;
-  color: var(--accent-color);
-  font-size: 1.2rem;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-}
-#theme-color-picker {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-/* 暗色模式适配 */
-body.dark-mode .theme-color-picker-container {
-  background: #262626;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-</style><script>// 1. 立即执行脚本：页面一加载就读取用户保存的颜色，防止颜色闪烁 (FOUC)
-(function() {
-  var savedColor = localStorage.getItem('custom-accent-color');
-  if (savedColor) {
-    document.documentElement.style.setProperty('--accent-color', savedColor);
-  }
-})();
-
-// 2. DOM加载完成后绑定调色板事件
-document.addEventListener('DOMContentLoaded', function() {
-  const colorPicker = document.getElementById('theme-color-picker');
-  const root = document.documentElement;
-  
-  // 初始化颜色选择器的UI显示值
-  const savedColor = localStorage.getItem('custom-accent-color');
-  if (savedColor) {
-    colorPicker.value = savedColor;
-  }
-
-  // 监听：颜色面板拖动时（实时更新整个网站的颜色）
-  colorPicker.addEventListener('input', function(e) {
-    const newColor = e.target.value;
-    root.style.setProperty('--accent-color', newColor);
-  });
-
-  // 监听：颜色选择完毕关闭面板时（保存到浏览器缓存，下次打开依然有效）
-  colorPicker.addEventListener('change', function(e) {
-    const newColor = e.target.value;
-    localStorage.setItem('custom-accent-color', newColor);
-  });
-});</script><div class="search-overlay"><div class="search-container"><div class="search-form"><input class="search-input" type="text" placeholder="搜索文章..."/><div class="search-close">×</div></div><div class="search-results"></div></div></div><main class="main"><!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><title>about | Makitoid's Blog</title><link rel="stylesheet" href="/css/about.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></head><body><main class="about-page"><div id="background-shapes"></div><div class="about-container"><div class="about-header"><div class="about-avatar"><img src="/images/0.webp" alt="Avatar"></div><h1 class="about-name">Makitoid</h1><p class="about-bio">不忘初心 方得始终</p></div><div class="interests-showcase"><a class="interest-card card-portrait card-medium" href="#" target="_blank"><div class="card-bg" style="background-image: url(/images/4.jpeg); background-size: cover; background-position: center;"></div><div class="card-content"><h3 class="card-title">数码</h3><div class="card-description"><p>研究点有意思的</p></div><div class="card-icon"><i class="fas fa-heart"></i></div><div class="card-hover-content"><p></p></div></div></a></div><div class="about-details"><div class="about-section"><h2>关于我</h2><div class="intro-card-wrapper"><div class="intro-banner-bg"><img src="/images/1.jpg" alt="Banner" onerror="this.style.display='none'"><div class="banner-overlay"></div></div><div class="profile-info-content"><div class="profile-item" data-label="称呼">Makitoid</div><div class="profile-item" data-label="家乡">山东济南</div><div class="profile-item" data-label="大学">齐鲁工业大学</div><div class="profile-item" data-label="教育">大一在读</div></div></div></div><div class="about-section"><h2>兴趣点</h2><div class="interest-cloud"><span class="skill-tag">折腾电脑</span><span class="skill-tag">爬山</span><span class="skill-tag">数码</span><span class="skill-tag">地铁跑酷（暂时退坑）</span><span class="skill-tag">地铁跑酷城市（暂时退坑）</span><span class="skill-tag">绝区零</span><span class="skill-tag">乱涂！彩世界</span></div></div><div class="about-section"><h2>自我介绍</h2><div class="bio-content" style="white-space: pre-wrap;">一个普通的人。</div></div><div class="about-section"><h2>联系方式</h2><div class="contact-info"><a class="contact-item" href="mailto:makitoidyyds@gmail.com"><i class="fas fa-envelope"></i><div><div class="contact-label">邮箱</div><div class="contact-value">makitoidyyds@gmail.com</div></div></a><a class="contact-item" target="_blank" rel="noopener" href="https://github.com/makitoid"><i class="fab fa-github"></i><div><div class="contact-label">GitHub</div><div class="contact-value">makitoid</div></div></a><a class="contact-item" target="_blank" rel="noopener" href="https://space.bilibili.com/3690988600035392"><i class="fas fa-tv"></i><div><div class="contact-label">哔哩哔哩</div><div class="contact-value">Makitoid_wang</div></div></a></div></div></div></div></main><script>document.addEventListener('DOMContentLoaded', function() {
+</style><link rel="stylesheet" href="https://cdn1.tianli0.top/gh/qxchuckle/Post-Summary-AI/chuckle-post-ai.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="app"><header class="header navbar-bubble"><nav class="nav"><div class="nav-container"><div class="nav-logo"><a href="/"><span class="nav-title">Makitoid's Blog</span></a></div><div class="nav-menu"><a class="nav-item" href="/">首页</a><a class="nav-item active" href="/about/">关于</a><a class="nav-item" href="/murmur/">碎碎念</a><div class="nav-item has-submenu"><span class="nav-link">文章</span><div class="submenu"><a class="submenu-item" href="/archives/">归档</a><a class="submenu-item" href="/categories/">分类</a><a class="submenu-item" href="/tags/">标签</a></div></div><a class="nav-item" href="/link/">友链</a><!-- 搜索按钮--><div class="search-toggle"><i class="fas fa-search"></i></div></div><div class="nav-toggle"><span></span><span></span><span></span></div></div></nav></header><div class="search-overlay"><div class="search-container"><div class="search-form"><input class="search-input" type="text" placeholder="搜索文章..."/><div class="search-close">×</div></div><div class="search-results"></div></div></div><main class="main"><!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><title>about | Makitoid's Blog</title><link rel="stylesheet" href="/css/about.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></head><body><main class="about-page"><div id="background-shapes"></div><div class="about-container"><div class="about-header"><div class="about-avatar"><img src="/images/0.webp" alt="Avatar"></div><h1 class="about-name">Makitoid</h1><p class="about-bio">不忘初心 方得始终</p></div><div class="interests-showcase"><a class="interest-card card-portrait card-medium" href="#" target="_blank"><div class="card-bg" style="background-image: url(/images/4.jpeg); background-size: cover; background-position: center;"></div><div class="card-content"><h3 class="card-title">数码</h3><div class="card-description"><p>研究点有意思的</p></div><div class="card-icon"><i class="fas fa-heart"></i></div><div class="card-hover-content"><p></p></div></div></a></div><div class="about-details"><div class="about-section"><h2>关于我</h2><div class="intro-card-wrapper"><div class="intro-banner-bg"><img src="/images/1.jpg" alt="Banner" onerror="this.style.display='none'"><div class="banner-overlay"></div></div><div class="profile-info-content"><div class="profile-item" data-label="称呼">Makitoid</div><div class="profile-item" data-label="家乡">山东济南</div><div class="profile-item" data-label="大学">齐鲁工业大学</div><div class="profile-item" data-label="教育">大一在读</div></div></div></div><div class="about-section"><h2>兴趣点</h2><div class="interest-cloud"><span class="skill-tag">折腾电脑</span><span class="skill-tag">爬山</span><span class="skill-tag">数码</span><span class="skill-tag">地铁跑酷（暂时退坑）</span><span class="skill-tag">地铁跑酷城市（暂时退坑）</span><span class="skill-tag">绝区零</span><span class="skill-tag">乱涂！彩世界</span></div></div><div class="about-section"><h2>自我介绍</h2><div class="bio-content" style="white-space: pre-wrap;">一个普通的人。</div></div><div class="about-section"><h2>联系方式</h2><div class="contact-info"><a class="contact-item" href="mailto:makitoidyyds@gmail.com"><i class="fas fa-envelope"></i><div><div class="contact-label">邮箱</div><div class="contact-value">makitoidyyds@gmail.com</div></div></a><a class="contact-item" target="_blank" rel="noopener" href="https://github.com/makitoid"><i class="fab fa-github"></i><div><div class="contact-label">GitHub</div><div class="contact-value">makitoid</div></div></a><a class="contact-item" target="_blank" rel="noopener" href="https://space.bilibili.com/3690988600035392"><i class="fas fa-tv"></i><div><div class="contact-label">哔哩哔哩</div><div class="contact-value">Makitoid_wang</div></div></a></div></div></div></div></main><script>document.addEventListener('DOMContentLoaded', function() {
   // === 背景几何图形漫游 ===
   const shapeContainer = document.getElementById('background-shapes');
   if(shapeContainer) {
@@ -232,6 +164,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="/js/loading-animation.js"></script>
 
 <script src="/js/article-modal.js"></script>
+
+<script src="/js/music-player.js"></script>
 <script>window.theme = {
   features: {"dark_mode":true,"smooth_scroll":true,"back_to_top":true,"loading_animation":true},
   code_block: {"height_limit":200,"enable_folding":true,"max_height":"300px","show_lang":true},

@@ -7,14 +7,15 @@
     document.documentElement.classList.add('dark-mode');
   }
 })();
+</script><script>if (window.parent !== window) {
+  document.documentElement.classList.add('is-iframe');
+}
 </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="icon" href="/images/0.webp">
 <link rel="stylesheet" href="/css/main.css">
 
 <link rel="stylesheet" href="/css/tags.css">
 
 <link rel="stylesheet" href="/css/categories.css">
-
-<link rel="stylesheet" href="/css/categories-accordion.css">
 
 <link rel="stylesheet" href="/css/highlight.css">
 
@@ -39,6 +40,8 @@
 <link rel="stylesheet" href="/css/loading-animation.css">
 
 <link rel="stylesheet" href="/css/article-modal.css">
+
+<link rel="stylesheet" href="/css/music-player.css">
 <!-- 条件加载关于页面样式--><style>:root {
   --primary-color: #1a1a1a;
   --secondary-color: #666666;
@@ -49,78 +52,7 @@
   --tag-background-color: #ffffff;
   --card-background-color: #ffffff;
 }
-</style><link rel="stylesheet" href="https://cdn1.tianli0.top/gh/qxchuckle/Post-Summary-AI/chuckle-post-ai.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="app"><header class="header navbar-bubble"><nav class="nav"><div class="nav-container"><div class="nav-logo"><a href="/"><span class="nav-title">Makitoid's Blog</span></a></div><div class="nav-menu"><a class="nav-item" href="/">首页</a><a class="nav-item" href="/about/">关于</a><a class="nav-item" href="/murmur/">碎碎念</a><div class="nav-item has-submenu"><span class="nav-link">文章</span><div class="submenu"><a class="submenu-item" href="/archives/">归档</a><a class="submenu-item" href="/categories/">分类</a><a class="submenu-item" href="/tags/">标签</a></div></div><a class="nav-item" href="/link/">友链</a><!-- 搜索按钮--><div class="search-toggle"><i class="fas fa-search"></i></div></div><div class="nav-toggle"><span></span><span></span><span></span></div></div></nav></header><div class="theme-color-picker-container"><label for="theme-color-picker" title="自定义主题色"><i class="fas fa-palette"></i></label><input type="color" id="theme-color-picker" value="#1c96d0"/></div><style>.theme-color-picker-container {
-  position: fixed;
-  top: 85px; /* 位于导航栏下方 */
-  right: 20px;
-  z-index: 999;
-  width: 40px;
-  height: 40px;
-  background: var(--card-background-color, #ffffff);
-  border-radius: 50%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.theme-color-picker-container:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-}
-.theme-color-picker-container label {
-  cursor: pointer;
-  color: var(--accent-color);
-  font-size: 1.2rem;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-}
-#theme-color-picker {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-/* 暗色模式适配 */
-body.dark-mode .theme-color-picker-container {
-  background: #262626;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-</style><script>// 1. 立即执行脚本：页面一加载就读取用户保存的颜色，防止颜色闪烁 (FOUC)
-(function() {
-  var savedColor = localStorage.getItem('custom-accent-color');
-  if (savedColor) {
-    document.documentElement.style.setProperty('--accent-color', savedColor);
-  }
-})();
-
-// 2. DOM加载完成后绑定调色板事件
-document.addEventListener('DOMContentLoaded', function() {
-  const colorPicker = document.getElementById('theme-color-picker');
-  const root = document.documentElement;
-  
-  // 初始化颜色选择器的UI显示值
-  const savedColor = localStorage.getItem('custom-accent-color');
-  if (savedColor) {
-    colorPicker.value = savedColor;
-  }
-
-  // 监听：颜色面板拖动时（实时更新整个网站的颜色）
-  colorPicker.addEventListener('input', function(e) {
-    const newColor = e.target.value;
-    root.style.setProperty('--accent-color', newColor);
-  });
-
-  // 监听：颜色选择完毕关闭面板时（保存到浏览器缓存，下次打开依然有效）
-  colorPicker.addEventListener('change', function(e) {
-    const newColor = e.target.value;
-    localStorage.setItem('custom-accent-color', newColor);
-  });
-});</script><div class="search-overlay"><div class="search-container"><div class="search-form"><input class="search-input" type="text" placeholder="搜索文章..."/><div class="search-close">×</div></div><div class="search-results"></div></div></div><main class="main"><div class="post-wrapper"><article class="post-container"><div class="post-header"><h1 class="post-title">Tags</h1><div class="post-subtitle"><span>探索与</span> "Visual Studio" <span>相关的所有文章</span></div></div><div class="tags-content"><!-- 显示特定标签的文章列表--><div class="tag-posts"><div class="tag-header"><div class="tag-info"><h2 class="tag-name"> <i class="fas fa-tag"></i> Visual Studio</h2><div class="tag-description"> <span>共有</span> 1 <span>篇文章</span></div></div><div class="tag-back"><a href="/tags/"><i class="fas fa-arrow-left"></i> 返回所有标签</a></div></div><div class="post-list"><!-- 根据索引创建不同大小的卡片--><div class="post-item post-item--large"><div class="post-item-inner"><div class="post-item-title"><a href="/2026/03/15/vs2026_printf_warning/">VS2026对C语言printf报警的解决方案</a></div><div class="post-item-excerpt"><!-- 使用 strip_html 过滤器移除 HTML 标签后再截取文本--><p> 前一阵子一个学C朋友问我为什么在Visual Studio 2026里面写C语言代码，用printf()函数会报警warning。我研究了一下，在这里分享给大家。
+</style><link rel="stylesheet" href="https://cdn1.tianli0.top/gh/qxchuckle/Post-Summary-AI/chuckle-post-ai.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><meta name="generator" content="Hexo 8.1.2"></head><body><div id="app"><header class="header navbar-bubble"><nav class="nav"><div class="nav-container"><div class="nav-logo"><a href="/"><span class="nav-title">Makitoid's Blog</span></a></div><div class="nav-menu"><a class="nav-item" href="/">首页</a><a class="nav-item" href="/about/">关于</a><a class="nav-item" href="/murmur/">碎碎念</a><div class="nav-item has-submenu"><span class="nav-link">文章</span><div class="submenu"><a class="submenu-item" href="/archives/">归档</a><a class="submenu-item" href="/categories/">分类</a><a class="submenu-item" href="/tags/">标签</a></div></div><a class="nav-item" href="/link/">友链</a><!-- 搜索按钮--><div class="search-toggle"><i class="fas fa-search"></i></div></div><div class="nav-toggle"><span></span><span></span><span></span></div></div></nav></header><div class="search-overlay"><div class="search-container"><div class="search-form"><input class="search-input" type="text" placeholder="搜索文章..."/><div class="search-close">×</div></div><div class="search-results"></div></div></div><main class="main"><div class="post-wrapper"><article class="post-container"><div class="post-header"><h1 class="post-title">Tags</h1><div class="post-subtitle"><span>探索与</span> "Visual Studio" <span>相关的所有文章</span></div></div><div class="tags-content"><!-- 显示特定标签的文章列表--><div class="tag-posts"><div class="tag-header"><div class="tag-info"><h2 class="tag-name"> <i class="fas fa-tag"></i> Visual Studio</h2><div class="tag-description"> <span>共有</span> 1 <span>篇文章</span></div></div><div class="tag-back"><a href="/tags/"><i class="fas fa-arrow-left"></i> 返回所有标签</a></div></div><div class="post-list"><!-- 根据索引创建不同大小的卡片--><div class="post-item post-item--large"><div class="post-item-inner"><div class="post-item-title"><a href="/2026/03/15/vs2026_printf_warning/">VS2026对C语言printf报警的解决方案</a></div><div class="post-item-excerpt"><!-- 使用 strip_html 过滤器移除 HTML 标签后再截取文本--><p> 前一阵子一个学C朋友问我为什么在Visual Studio 2026里面写C语言代码，用printf()函数会报警warning。我研究了一下，在这里分享给大家。
 先说结论这个东西是MSVC导致的。MSVC对C的支持本身就不好，而新更新的C++ 20标准更推荐使用printf_s函数，所以就会导致这个warning。
 如何解决？1.第一种：更换标准在Visual Studio中的“项目”选项卡中点击“xxx和属性”将语言标准改成别的，只要不是C++ 20就行。
 2.第二种：换用clang编译器在Visual Studio Installer中勾选这个选项：等待安装完成后，重复1的步骤，但是将...</p></div><div class="post-item-meta"><div class="post-meta-left"><span class="post-date"><i class="far fa-calendar"></i> 2026-03-15</span><span class="post-category"> <i class="fas fa-folder"></i><a href="/categories/%E9%97%B2%E8%81%8A%E6%9D%82%E8%B0%88/">闲聊杂谈</a></span></div><div class="post-meta-right"><a class="read-more" href="/2026/03/15/vs2026_printf_warning/">阅读全文 <i class="fas fa-arrow-right"></i></a></div></div></div></div></div></div></div></article></div></main><div id="waves-container"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><footer class="footer"><div class="footer-bottom"><div class="footer-copyright">© 2025 Makitoid. All rights reserved.</div><!-- Footer centered image with link--><div class="footer-badges"><a target="_blank" rel="noopener" href="https://hexo.io/" title="博客框架为Hexo_v8.1.0"><img src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v8.1.0"/></a><a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></div></div></footer></div><!-- 立即应用暗色模式，避免页面闪烁--><script>(function() {
@@ -172,6 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="/js/loading-animation.js"></script>
 
 <script src="/js/article-modal.js"></script>
+
+<script src="/js/music-player.js"></script>
 <script>window.theme = {
   features: {"dark_mode":true,"smooth_scroll":true,"back_to_top":true,"loading_animation":true},
   code_block: {"height_limit":200,"enable_folding":true,"max_height":"300px","show_lang":true},
