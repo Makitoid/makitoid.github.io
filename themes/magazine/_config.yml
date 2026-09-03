@@ -233,10 +233,8 @@ compress_images:
 # Custom code injection
 inject:
   head:
-    # Custom CSS
+    # Custom CSS（已清空：font-awesome 改用本地 /css/fontawesome.css；chuckle-post-ai.css 由 postai.js 内部动态注入）
     # - <link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'">
-    - <link rel="stylesheet" href="https://cdn1.tianli0.top/gh/qxchuckle/Post-Summary-AI/chuckle-post-ai.css"> #AI
-    - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   bottom:
     # Custom JavaScript
     # - <script src="/js/xxx"></script>

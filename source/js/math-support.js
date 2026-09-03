@@ -27,7 +27,7 @@
 
   // 2. 动态加载 MathJax 脚本
   let script = document.createElement("script");
-  script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
+  script.src = "https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js";
   script.async = true;
   script.id = "MathJax-script";
   document.head.appendChild(script);

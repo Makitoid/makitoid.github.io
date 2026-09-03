@@ -4,7 +4,7 @@ html(lang=config.language)
     meta(charset='UTF-8')
     title= (page.title || '关于我') + ' | ' + config.title
     link(rel='stylesheet', href=url_for('/css/about.css'))
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css')
+    //- Font Awesome 由 layout.pug 统一加载（本地 css/fontawesome.css），此处无需重复
 
   body
     main.about-page

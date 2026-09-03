@@ -29,16 +29,16 @@ html(lang=config.language)
         document.documentElement.classList.add('is-iframe');
       }
 
-    //- Fonts
-    link(rel="preconnect", href="https://fonts.googleapis.com")
-    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
-    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap", rel="stylesheet")
+    //- Fonts: Google Fonts 在国内被墙，已移除；改用系统字体栈（已在 _config.fonts 配置 fallback）
+    //- link(rel="preconnect", href="https://fonts.googleapis.com")
+    //- link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+    //- link(href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap", rel="stylesheet")
 
-    //- Font Awesome Icons
-    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css")
+    //- Font Awesome Icons (本地资源，避免 cdnjs 在国内被墙)
+    link(rel="stylesheet", href=url_for("/css/fontawesome.css"))
 
-    //- QR Code library for WeChat sharing
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js")
+    //- QR Code library for WeChat sharing (bootcdn 国内可达，避免 cdnjs 同步阻塞)
+    script(src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js")
 
     //- RSS
     if feed
@@ -139,11 +139,14 @@ html(lang=config.language)
             document.body.classList.add('dark-mode');
           }
 
-          // 防止页面闪烁，在DOM加载完成前设置一个初始类
+          // 防止页面闪烁：先隐藏 html，等 DOMContentLoaded 后再显示
+          // 但若外部脚本被墙导致 DOMContentLoaded 迟迟不触发，必须用 setTimeout 兜底强制恢复可见，
+          // 否则页面会永久白屏（这是国内打不开的直接原因之一）
           document.documentElement.style.visibility = 'hidden';
-          document.addEventListener('DOMContentLoaded', function() {
-            document.documentElement.style.visibility = 'visible';
-          });
+          var reveal = function() { document.documentElement.style.visibility = 'visible'; };
+          document.addEventListener('DOMContentLoaded', reveal);
+          window.addEventListener('load', reveal);
+          setTimeout(reveal, 2500);
         })();
 
     //- Scripts
