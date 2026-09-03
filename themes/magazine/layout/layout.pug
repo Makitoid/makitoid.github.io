@@ -34,8 +34,8 @@ html(lang=config.language)
     //- link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
     //- link(href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap", rel="stylesheet")
 
-    //- Font Awesome Icons (本地资源，避免 cdnjs 在国内被墙)
-    link(rel="stylesheet", href=url_for("/css/fontawesome.css"))
+    //- Font Awesome Icons (本地完整版 all.min.css + webfonts，避免 cdnjs 在国内被墙)
+    link(rel="stylesheet", href=url_for("/css/fontawesome-all.min.css"))
 
     //- QR Code library for WeChat sharing (bootcdn 国内可达，避免 cdnjs 同步阻塞)
     script(src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js")
