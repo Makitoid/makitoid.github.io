@@ -48,7 +48,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-touch-callout: none;
-    cursor: url(https://cdn.jsdelivr.net/gh/Tomotoes/images/blog/default.cur), auto !important
+    cursor: auto !important
 }
 
 ul {
@@ -64,7 +64,7 @@ img {
 
 a,
 img {
-    cursor: url(https://cdn.jsdelivr.net/gh/Tomotoes/images/blog/pointer.cur), auto !important
+    cursor: pointer !important
 }
 
 a {
