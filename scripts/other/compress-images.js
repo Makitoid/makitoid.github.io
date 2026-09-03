@@ -37,8 +37,18 @@ const EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif", ".svg"];
 hexo.extend.filter.register("after_generate", async function () {
   if (!CONFIG.enable) return;
 
-  const publicDir = this.public_dir;
   const log = this.log;
+  const publicDir = this.public_dir;
+
+  // 本地 hexo server 预览时跳过：server 每次启动都会重新 generate 覆盖 public/，
+  // 压缩耗时且期间 server 不响应请求，导致本地预览长时间白屏。压缩只需在 deploy 前生效。
+  const isServer = process.argv.some(
+    (arg) => arg === "server" || arg === "s" || /\\hexo(-server)?\.js$/.test(arg),
+  );
+  if (isServer) {
+    log.info("⏭️ [Image Compressor] Skipped in local server mode.");
+    return;
+  }
 
   // === [Added: Check Sharp Dependency] ===
   // 如果 sharp 未安装，打印提醒并优雅跳过

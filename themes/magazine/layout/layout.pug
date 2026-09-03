@@ -37,8 +37,8 @@ html(lang=config.language)
     //- Font Awesome Icons (本地完整版 all.min.css + webfonts，避免 cdnjs 在国内被墙)
     link(rel="stylesheet", href=url_for("/css/fontawesome-all.min.css"))
 
-    //- QR Code library for WeChat sharing (bootcdn 国内可达，避免 cdnjs 同步阻塞)
-    script(src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js")
+    //- QR Code library for WeChat sharing (已本地化，避免任何第三方 CDN 阻塞首屏)
+    script(src=url_for("/js/qrcode.min.js"))
 
     //- RSS
     if feed
