@@ -3,6 +3,7 @@
 /* Override post-container for 404 page - make it full-height centered */
 .page-404 .post-container {
   max-width: 100%;
+  width: 100%;
   padding: 0;
   display: flex;
   align-items: center;
