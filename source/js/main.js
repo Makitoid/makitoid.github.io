@@ -194,9 +194,11 @@ function initLoadMore() {
 function initPostShare() {
   const shareButtons = document.querySelectorAll(".share-btn");
   const copyButton = document.querySelector(".share-btn.copy");
+  const wechatButton = document.querySelector(".share-btn.wechat");
 
   shareButtons.forEach((button) => {
-    if (button === copyButton) return;
+    // copy and wechat buttons are handled by share.js (clipboard / QR modal)
+    if (button === copyButton || button === wechatButton) return;
 
     button.addEventListener("click", function (e) {
       e.preventDefault();

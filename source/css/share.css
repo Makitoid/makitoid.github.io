@@ -38,6 +38,13 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.share-icon {
+  width: auto;
+  height: 1em;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
 .share-btn span {
   margin-left: 0.5rem;
 }
